@@ -30,7 +30,7 @@ public class LoadSave {
 		    System.err.println(x);
 		}
 	}
-	static void CreateDefaultBooks() {
+	public static void CreateDefaultBooks() {
 		Menu.library.add(new Book("In Search of Lost Time", "Marcel Proust"));
 		Menu.library.add(new Book("Don Quixote", "Miguel de Cervantes"));
 		Menu.library.add(new Book("Ulysses", "James Joyce"));

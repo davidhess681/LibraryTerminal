@@ -5,7 +5,8 @@ public class Menu {
 	public static ArrayList<Book> library = new ArrayList<Book>();
 	public static void MainMenu() {
 		while(loopMenu) {
-			switch (Prompt.MenuChoice()) {
+			int choice = Prompt.MenuChoice();
+			switch (choice) {
 			case 1:
 				ListAllBooks();
 				break;
@@ -28,10 +29,16 @@ public class Menu {
 		}
 	}
 	static void PrintResults(ArrayList<Book> lib) {
-		System.out.println("\nTitle\tAuthor");
+		if(lib.isEmpty()) {
+			System.out.println("\nSorry, no results :(");
+		}
+		else {
+		String format = "%-40s%s%n";
+		System.out.printf(format, "Title","Author");
 		System.out.println("=======================================================================");
 		for (Book book : lib) {
-			System.out.println(book.Title + "\t" + book.Author);
+			System.out.printf(format, book.Title, book.Author);
+		}
 		}
 	}
 	static ArrayList<Book> SearchResults() {
@@ -90,7 +97,7 @@ public class Menu {
 	}
 	static void Quit() {
 		System.out.println("Are you sure you want to quit? (y/n): ");
-		if(Prompt.YesOrNo()) {
+		if(Prompt.Quit()) {
 			loopMenu = false;
 		}
 	}

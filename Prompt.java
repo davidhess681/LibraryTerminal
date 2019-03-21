@@ -4,18 +4,25 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Prompt {
 	static Scanner input = new Scanner(System.in);
+	public static boolean Quit() {
+		boolean quit = YesOrNo();
+		if(quit) {
+			input.close();
+		}
+		return quit;
+	}	
 	public static boolean YesOrNo()
     {
         while (true)
         {
-            String response = input.nextLine();
+        	String response = input.nextLine().toLowerCase();
             if (response == "y" || response == "yes")
             {
-                return true;
+            	return true;
             }
             else if (response== "n" || response == "no")
             {
-                return false;
+            	return false;
             }
             else
             {
@@ -42,7 +49,7 @@ public class Prompt {
 	public static String ValidTitle() {
 		System.out.println("\nPlease input keywords you wish to search for: ");
 		while (true) {
-			String title = input.nextLine();
+			String title = input.nextLine().toLowerCase();
 			if (title.isEmpty() || title.length() > 35) {
 				System.out.println("That is not correct input, try again: ");
 				continue;
